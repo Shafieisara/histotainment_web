@@ -27,7 +27,7 @@ const benefits = [
 export const Benefits = () => {
   return (
     <section className="py-20 bg-stone-100 border-t border-stone-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl xl:max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
             <h2 className="text-sm font-bold text-stone-700 tracking-wider uppercase mb-2">Warum AR-Histotainment?</h2>

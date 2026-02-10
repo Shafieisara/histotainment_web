@@ -5,7 +5,7 @@ import { Globe, RefreshCw, Layers } from 'lucide-react';
 export const ConceptBPlaceholder = () => {
     return (
         <section className="py-24 bg-sky-50/30 border-t border-sky-100" id="concept-b">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl xl:max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <span className="inline-block px-3 py-1 bg-sky-100 text-sky-800 text-xs font-bold tracking-wider uppercase rounded-full mb-4">
                         Konzept B

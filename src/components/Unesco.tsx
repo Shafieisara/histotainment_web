@@ -14,7 +14,7 @@ export const Unesco = () => {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl xl:max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-stone-800/40 border border-stone-600/50 rounded-full text-stone-300 text-sm font-semibold mb-8">
             <Landmark className="w-4 h-4" />
