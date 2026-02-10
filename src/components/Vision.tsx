@@ -4,7 +4,7 @@ import { Globe2, Smartphone, Landmark, ArrowRight } from 'lucide-react';
 export const Vision = () => {
     return (
         <section className="py-24 bg-white border-b border-stone-200" id="vision">
-            <div className="max-w-7xl xl:max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl xl:max-w-[98%] mx-auto px-4 sm:px-6 lg:px-8">
 
                 {/* Header */}
                 <div className="text-center mb-16 px-4">

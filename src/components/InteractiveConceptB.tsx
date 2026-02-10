@@ -15,7 +15,7 @@ export const InteractiveConceptB = () => {
 
     return (
         <section className="pt-0 pb-20" id="interactive-concept-b">
-            <div className="max-w-7xl xl:max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl xl:max-w-[98%] mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Subsection Header */}
                 <div className="text-center mb-16">
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-900/40 border border-sky-700/50 text-sky-300 text-sm font-medium shadow-lg mb-4">

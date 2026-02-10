@@ -8,7 +8,7 @@ export const Contact = () => {
 
     return (
         <section className="py-20 bg-stone-50 border-t-2 border-stone-300 relative z-10" id="contact">
-            <div className="max-w-7xl xl:max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl xl:max-w-[98%] mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center max-w-3xl mx-auto mb-12">
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-stone-100/40 border border-stone-200 text-stone-700 text-sm font-medium mb-6">
                         <Mail className="w-4 h-4" />
