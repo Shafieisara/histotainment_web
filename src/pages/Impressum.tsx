@@ -100,6 +100,9 @@ export const Impressum = () => {
                             <li>
                                 <strong>Kaiserpfalz, Zwinger-Turm, Kaiserworth:</strong> Wikimedia Commons / Public Domain
                             </li>
+                            <li>
+                                <strong>Weltkulturerbe Rammelsberg:</strong> Wikimedia Commons / Public Domain
+                            </li>
                         </ul>
 
                         <h3 className="text-lg font-medium text-stone-800 mb-2">KI-generierte Bilder</h3>
