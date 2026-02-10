@@ -56,7 +56,7 @@ export const Vision = () => {
                 </div>
 
                 {/* Fazit Box - Eye-catching but neutral */}
-                <div className="relative max-w-4xl mx-auto">
+                <div className="relative max-w-4xl mx-auto mt-16 md:mt-20">
                     <div className="relative bg-stone-100 border-2 border-stone-300 rounded-xl p-8 md:p-12 text-center">
                         <h3 className="text-2xl font-serif font-bold text-stone-900 mb-4">
                             Das Fazit
