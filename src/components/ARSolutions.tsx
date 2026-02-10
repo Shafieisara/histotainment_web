@@ -58,7 +58,7 @@ const solutions = [
 export const ARSolutions = () => {
     return (
         <section className="py-20 bg-white" id="solutions">
-            <div className="max-w-7xl xl:max-w-[98%] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl lg:max-w-[98%] mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
                 <div className="text-center mb-16">
                     <span className="inline-block px-3 py-1 bg-stone-100 text-stone-600 text-xs font-bold tracking-wider uppercase rounded-full mb-4">

@@ -29,7 +29,7 @@ const steps = [
 export const HowItWorksB = () => {
     return (
         <section className="pt-8 pb-20" id="how-it-works-b">
-            <div className="max-w-7xl xl:max-w-[98%] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl lg:max-w-[98%] mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h2 className="text-sm font-bold text-sky-700 tracking-wider uppercase mb-2">Anleitung</h2>
                     <h3 className="text-3xl md:text-4xl font-serif font-bold text-stone-900">So funktioniert die virtuelle Tour</h3>

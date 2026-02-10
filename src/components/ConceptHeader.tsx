@@ -18,7 +18,7 @@ export const ConceptHeader = ({ concept, title, description, icon }: ConceptHead
     const defaultIcon = isConceptA ? <Smartphone className="w-6 h-6" /> : <Globe className="w-6 h-6" />;
 
     return (
-        <div className="max-w-7xl xl:max-w-[98%] mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12">
+        <div className="max-w-7xl lg:max-w-[98%] mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12">
             <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
                 {/* Icon */}
                 <div 

@@ -6,7 +6,7 @@ const Spline = React.lazy(() => import('@splinetool/react-spline'));
 export const ModelSection = () => {
   return (
     <section className="pt-8 pb-20 overflow-hidden">
-      <div className="max-w-7xl xl:max-w-[98%] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl lg:max-w-[98%] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-900/40 border border-amber-700/50 text-amber-300 text-sm font-medium shadow-lg mb-4">
             <Sparkles className="w-4 h-4" />

@@ -77,6 +77,13 @@
     padding-right: 10rem;
     /* 160px */
   }
+
+  /* Custom max-width for wider screens */
+  @media (width >= 64rem) {
+    .lg\:max-w-\[98\%\] {
+      max-width: 98%;
+    }
+  }
 }
 
 @layer properties {
