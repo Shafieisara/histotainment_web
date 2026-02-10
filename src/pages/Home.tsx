@@ -1,20 +1,16 @@
 import React from 'react';
 import { Navbar } from '../components/Navbar';
-import { Hero } from '../components/Hero';
 import { AboutProject } from '../components/AboutProject';
+import { ProjectContext } from '../components/ProjectContext'; // New component
 
 import { ARSimulation } from '../components/ARSimulation';
 import { ModelSection } from '../components/ModelSection';
-import { GlobalTrendSection } from '../components/GlobalTrendSection';
 import { HowItWorks } from '../components/HowItWorks';
 import { ARSolutions } from '../components/ARSolutions';
-import { Locations } from '../components/Locations';
-import { Benefits } from '../components/Benefits';
 import { ReferenceProjectsA } from '../components/ReferenceProjectsA';
 import { InteractiveConceptB } from '../components/InteractiveConceptB';
 import { HowItWorksB } from '../components/HowItWorksB';
 import { ReferenceProjectsB } from '../components/ReferenceProjectsB';
-import { Unesco } from '../components/Unesco';
 import { Contact } from '../components/Contact';
 import { Footer } from '../components/Footer';
 import { ConceptHeader } from '../components/ConceptHeader';
@@ -25,21 +21,14 @@ export const Home = () => {
             <style>{`html { scroll-behavior: smooth; }`}</style>
             <Navbar />
             <main>
-                <Hero />
                 <AboutProject />
-                
-                {/* Global Context */}
-                <GlobalTrendSection />
-                
-                <Locations />
-                <Benefits />
-                <Unesco />
-                
+                <ProjectContext />
+
                 <ARSolutions />
 
                 {/* Concept A: AR Time Travel */}
-                <section 
-                    id="concept-a" 
+                <section
+                    id="concept-a"
                     className="relative bg-amber-50 border-t border-stone-200"
                     style={{
                         borderLeftWidth: '8px',
@@ -62,8 +51,8 @@ export const Home = () => {
                 <div className="h-1 bg-gradient-to-r from-amber-500 via-stone-300 to-sky-500" />
 
                 {/* Concept B: 360° Virtual Tours */}
-                <section 
-                    id="concept-b" 
+                <section
+                    id="concept-b"
                     className="relative"
                     style={{
                         backgroundColor: '#e0f2fe', // sky-100 - matches ARSolutions
