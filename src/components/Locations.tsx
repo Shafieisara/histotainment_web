@@ -30,7 +30,7 @@ export const Locations = () => {
     <section className="py-20 bg-white" id="cities">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-          <div className="max-w-2xl">
+          <div className="max-w-4xl">
             <h2 className="text-sm font-bold text-stone-700 tracking-wider uppercase mb-2">Highlights</h2>
             <h3 className="text-3xl md:text-4xl font-serif font-bold text-stone-900 mb-4">Historische Orte in Goslar</h3>
             <p className="text-stone-600 text-lg">
