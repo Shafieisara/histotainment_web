@@ -14,8 +14,11 @@ export const Hero = () => {
           className="w-full h-full object-cover"
           loading="eager"
         />
-        {/* Overlay gradient for readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/40 via-slate-900/20 to-slate-900/80" />
+        {/* Overlay gradient for readability - Using inline style to force update */}
+        <div
+          className="absolute inset-0 z-1"
+          style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}
+        />
       </div>
 
       {/* Content */}
@@ -26,12 +29,12 @@ export const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="space-y-6"
         >
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold tracking-tight leading-tight drop-shadow-lg">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold tracking-tight leading-tight drop-shadow-xl">
             Geschichte hautnah<br />
             erleben.
           </h1>
 
-          <p className="max-w-2xl mx-auto text-lg md:text-2xl text-stone-100 font-light leading-relaxed drop-shadow-md">
+          <p className="max-w-2xl mx-auto text-lg md:text-2xl text-stone-200 font-light leading-relaxed drop-shadow-lg">
             Eintauchen in die Vergangenheit.<br className="hidden md:block" />
             Ob vor Ort am Originalschauplatz oder digital von überall.
           </p>
@@ -41,14 +44,8 @@ export const Hero = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-              className="w-full sm:w-auto px-8 py-4 text-white text-lg font-semibold rounded-full shadow-lg transition-all flex items-center justify-center gap-2"
-              style={{ backgroundColor: '#000000' }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#1c1917';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#000000';
-              }}
+              className="w-full sm:w-auto px-8 py-4 bg-black text-white hover:bg-stone-900 text-lg font-bold rounded-full shadow-lg transition-all flex items-center justify-center gap-2"
+              style={{ backgroundColor: 'black', color: 'white' }}
             >
               <Smartphone className="w-5 h-5" />
               Über das Projekt

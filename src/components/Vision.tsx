@@ -62,7 +62,7 @@ export const Vision = () => {
                             Das Fazit
                         </h3>
                         <p className="text-xl md:text-2xl font-medium text-stone-700 leading-snug">
-                            "Ein risikoarmes Pilotprojekt mit maximaler Außenwirkung für das Stadtmarketing der Stadt Goslar."
+                            "Ein risikoarmes Pilotprojekt mit maximaler Außenwirkung für das Stadtmarketing."
                         </p>
                     </div>
                 </div>
