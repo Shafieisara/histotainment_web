@@ -7,6 +7,7 @@ import { ARSimulation } from '../components/ARSimulation';
 import { ModelSection } from '../components/ModelSection';
 import { HowItWorks } from '../components/HowItWorks';
 import { ARSolutions } from '../components/ARSolutions';
+import { Locations } from '../components/Locations';
 import { ReferenceProjectsA } from '../components/ReferenceProjectsA';
 import { InteractiveConceptB } from '../components/InteractiveConceptB';
 import { HowItWorksB } from '../components/HowItWorksB';
@@ -26,6 +27,8 @@ export const Home = () => {
 
                 <ARSolutions />
 
+
+
                 {/* Concept A: AR Time Travel */}
                 <section
                     id="concept-a"
@@ -38,8 +41,8 @@ export const Home = () => {
                 >
                     <ConceptHeader
                         concept="A"
-                        title="AR Time Travel"
-                        description="Digitale Überlagerung historischer Ansichten an drei zentralen Orten in Goslar. Besucher können per Smartphone-Kamera historische Gebäudeansichten am Originalstandort erleben und Vergangenheit mit Gegenwart vergleichen."
+                        title="AR Zeitreise & Storytelling"
+                        description="Erleben Sie Goslars Geschichte hautnah. Lauschen Sie Audio-Guides, entdecken Sie verborgene Details an historischen Bürgerhäusern und reisen Sie virtuell durch die Jahrhunderte."
                     />
                     <ModelSection />
                     <HowItWorks />

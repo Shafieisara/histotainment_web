@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, ScanLine, Eye } from 'lucide-react';
+import { MapPin, ScanLine, Eye, Smartphone } from 'lucide-react';
 import { motion } from 'motion/react';
 import ortBesuchenImg from 'figma:asset/94467f8e2f7836b3b0fa30490a24ba6f9f8087f6.png';
 import scannenImg from 'figma:asset/0830329a7f9cfe99b6b8aa647f9e9d3fe5477557.png';
@@ -8,23 +8,23 @@ import vergangenheitErlebenImg from 'figma:asset/1a1e0ad5f4acf16545ee8e6abf926b7
 const steps = [
   {
     id: 1,
-    title: "Ort besuchen",
-    description: "Reise nach Goslar und begib dich zu den markierten UNESCO-Standorten.",
+    title: "Standort entdecken",
+    description: "Reise nach Goslar und finde markierte Wahrzeichen und versteckte historische Bürgerhäuser.",
     icon: MapPin,
     image: ortBesuchenImg
   },
   {
     id: 2,
-    title: "Scannen",
-    description: "Nutze deine Smartphone-Kamera, um Gebäude und Plätze zu erfassen.",
+    title: "QR-Code scannen",
+    description: "Nutze deine Kamera, um den QR-Code am Gebäude zu scannen und die Zeitreise zu starten.",
     icon: ScanLine,
     image: scannenImg
   },
   {
     id: 3,
-    title: "Vergangenheit erleben",
-    description: "Sieh historische Rekonstruktionen als Overlay direkt auf deinem Bildschirm.",
-    icon: Eye,
+    title: "Geschichte hören & sehen",
+    description: "Erlebe die historische Ansicht und höre dir spannende Geschichten über Audio-Guides an.",
+    icon: Smartphone,
     image: vergangenheitErlebenImg
   }
 ];

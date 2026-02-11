@@ -2,51 +2,51 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ExternalLink, MapPin, Award, Smartphone } from 'lucide-react';
 
-// Konzept A: AR Time Travel - AR & VR Erlebnisse
+// Konzept A: Storytelling & Hidden Gems
 const arVrProjects = [
     {
-        name: "TimeRide",
-        cities: "Köln, Berlin, München, Dresden, Frankfurt, Münster",
-        description: "VR-Zeitreisen in die Geschichte deutscher Städte. Besucher erleben mit VR-Brillen historische Momente wie das unzerstörte Köln der 1920er Jahre.",
-        technology: "Virtual Reality, 360° Video",
-        visitors: "Über 500.000 Besucher jährlich",
-        website: "https://timeride.de",
+        name: "TimeRide Go!",
+        cities: "Köln, Dresden, München",
+        description: "Geführte Stadttouren mit VR-Brille. Hier steht nicht die Technik, sondern der emotionale »Blick in die Vergangenheit« im Vordergrund. Perfektes Vorbild für Storytelling.",
+        technology: "VR & Mobile Guides",
+        visitors: "Hohe Emotionalisierung",
+        website: "https://timeride.de/timeridego/",
+        icon: Smartphone
+    },
+    {
+        name: "Yona App (Lübeck)",
+        cities: "Lübeck",
+        description: "Eine AR-App, die 'Zeitfenster' öffnet. Besonders stark: Die Integration von Audio-Guides, die historische Figuren zu Wort kommen lassen.",
+        technology: "AR & Audio-Storytelling",
+        visitors: "Fokus auf Individualtouristen",
+        website: "https://www.yona.app",
         icon: MapPin
     },
     {
-        name: "Deutschlandmuseum Berlin",
-        cities: "Berlin",
-        description: "Preisgekröntes immersives Geschichtsmuseum mit 2000 Jahren deutscher Geschichte. Ausgezeichnet als 'Best Themed Museum 2024'.",
-        technology: "4D-Spezialeffekte, Interaktive Displays",
-        visitors: "Familienfreundlich, alle Altersgruppen",
-        website: "https://deutschlandmuseum.de",
+        name: "Essen 1887",
+        cities: "Essen",
+        description: "Eine Mixed-Reality-Stadtführung, bei der Hologramme von Schauspielern die Geschichte der Stadt erzählen. Ein Paradebeispiel für »Character-driven Storytelling«.",
+        technology: "Mixed Reality & GPS",
+        visitors: "Immersives Theater",
+        website: "https://www.essen1887.de",
         icon: Award
     },
     {
-        name: "ARmob Trier",
-        cities: "Trier, Rheinland-Pfalz",
-        description: "Universitätsprojekt mit 105 digitalen Rekonstruktionen römischer Stätten. AR-Integration historischer Bauwerke in die aktuelle Landschaft.",
-        technology: "Augmented Reality, 3D-Modelle",
-        visitors: "UNESCO-Welterbe Römerbauten",
-        website: "https://www.trier-info.de",
-        icon: Award
+        name: "WDR AR 1933-1945",
+        cities: "Digital / Überall",
+        description: "Zeitzeugen berichten als Hologramme von ihren Erlebnissen im Krieg. Zeigt eindrucksvoll, wie man schwere Themen sensibel und persönlich vermittelt.",
+        technology: "AR & Zeitzeugen-Interviews",
+        visitors: "Bildung & Gedenken",
+        website: "https://1933-1945.wdr.de/",
+        icon: Smartphone
     },
     {
-        name: "Zwinger Dresden",
-        cities: "Dresden, Sachsen",
-        description: "Barockes Gesamtkunstwerk mit 'Zwinger Xperience'. Multimedia-Ausstellung mit VR-Stationen und beeindruckenden 360°-Projektionen.",
-        technology: "VR-Stationen, Multimedia",
-        visitors: "UNESCO-Welterbe Dresdner Elbtal",
-        website: "https://www.der-dresdner-zwinger.de",
-        icon: MapPin
-    },
-    {
-        name: "Barockschloss Mannheim",
-        cities: "Mannheim, Baden-Württemberg",
-        description: "VR-Rekonstruktion des kurfürstlichen Appartements. Besucher erleben unzugängliche Räume virtuell in ihrer ursprünglichen Pracht.",
-        technology: "Virtual Reality, 3D-Rekonstruktion",
-        visitors: "Teil der Staatlichen Schlösser BW",
-        website: "https://www.schloss-mannheim.de",
+        name: "Histpad (Schlösser)",
+        cities: "Albrechtsburg Meissen u.a.",
+        description: "Tablet-Guide mit 'Zeittoren'. Besucher scannen Räume und sehen das historische Leben. Verbindet Gamification mit fundiertem Wissen.",
+        technology: "Tablet-AR & Schatzsuche",
+        visitors: "Interaktiv für Familien",
+        website: "https://www.histovery.com/de/",
         icon: MapPin
     }
 ];
@@ -58,10 +58,10 @@ export const ReferenceProjectsA = () => {
                 {/* Header */}
                 <div className="text-center mb-12">
                     <h2 className="text-3xl md:text-4xl font-serif font-bold text-stone-900 mb-4">
-                        Warum es funktioniert: Ähnliche erfolgreiche Projekte
+                        Warum es funktioniert: Storytelling & Immersion
                     </h2>
                     <p className="text-stone-600 max-w-2xl mx-auto text-lg">
-                        Diese Referenzprojekte zeigen, wie AR/VR-Technologie erfolgreich für historische Vermittlung eingesetzt wird.
+                        Diese Referenzprojekte zeigen, wie man Geschichte durch Erzählungen und Audio-Guides lebendig macht.
                     </p>
                 </div>
 
@@ -72,8 +72,8 @@ export const ReferenceProjectsA = () => {
                             <Smartphone className="w-4 h-4 text-amber-700" />
                         </div>
                         <div>
-                            <h3 className="text-xl font-serif font-bold text-stone-900">Referenzprojekte: AR Time Travel</h3>
-                            <p className="text-xs text-stone-500">Ähnliche AR/VR Erlebnisse</p>
+                            <h3 className="text-xl font-serif font-bold text-stone-900">Best Practices: Storytelling & Audio-Guides</h3>
+                            <p className="text-xs text-stone-500">Wie andere Städte Geschichte erzählen</p>
                         </div>
                     </div>
 
