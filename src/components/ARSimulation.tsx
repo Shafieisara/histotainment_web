@@ -1,7 +1,13 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Smartphone, Scan, Sparkles } from 'lucide-react';
-import goslarImage from '../assets/Marktplatz_Goslar-extra.jpg';
-import historicImage from '../assets/Marktplatz_Goslar-extra.-historical.jpg';
+import { Smartphone, Sparkles } from 'lucide-react';
+
+// WebP versions – much smaller
+import goslarImage from '../assets/webp/Marktplatz_Goslar-extra.webp';
+import historicImage from '../assets/webp/Marktplatz_Goslar-extra.-historical.webp';
+import {
+    lqip_Marktplatz_Goslar_extra,
+    lqip_Marktplatz_Goslar_extra__historical,
+} from '../assets/lqip';
 
 export const ARSimulation = () => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -9,6 +15,8 @@ export const ARSimulation = () => {
     const innerImageRef = useRef<HTMLDivElement>(null);
     const [isHovering, setIsHovering] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
+    const [baseBgLoaded, setBaseBgLoaded] = useState(false);
+    const [historicLoaded, setHistoricLoaded] = useState(false);
 
     useEffect(() => {
         const container = containerRef.current;
@@ -20,45 +28,34 @@ export const ARSimulation = () => {
             const containerRect = container.getBoundingClientRect();
             const lensRect = lens.getBoundingClientRect();
 
-            // Calculate lens center in pixels relative to container
             const lensCenterX = lensRect.left + lensRect.width / 2 - containerRect.left;
             const lensCenterY = lensRect.top + lensRect.height / 2 - containerRect.top;
 
-            // Inner image MUST be the same size as container for the effect to work
             innerImage.style.width = `${containerRect.width}px`;
             innerImage.style.height = `${containerRect.height}px`;
 
-            // The inner image is positioned at (0,0) within the lens
-            // To show the correct portion, we shift it by -lensCenterX + lensWidth/2
-            // This aligns the lens center with the corresponding point on the inner image
             const offsetX = -lensCenterX + lensRect.width / 2;
             const offsetY = -lensCenterY + lensRect.height / 2;
             innerImage.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
         };
 
-        // Initial position
         updateInnerImagePosition();
         setIsLoaded(true);
         window.addEventListener('resize', updateInnerImagePosition);
 
-        // Update on mouse move
         const onMouseMove = (e: MouseEvent) => {
             const rect = container.getBoundingClientRect();
             const x = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100));
             const y = Math.max(0, Math.min(100, ((e.clientY - rect.top) / rect.height) * 100));
 
-            // Update lens position
             lens.style.left = `${x}%`;
             lens.style.top = `${y}%`;
 
-            // Update inner image position to match
             requestAnimationFrame(updateInnerImagePosition);
         };
 
         const onMouseEnter = () => setIsHovering(true);
-        const onMouseLeave = () => {
-            setIsHovering(false);
-        };
+        const onMouseLeave = () => { setIsHovering(false); };
 
         container.addEventListener('mousemove', onMouseMove);
         container.addEventListener('mouseenter', onMouseEnter);
@@ -116,14 +113,36 @@ export const ARSimulation = () => {
                     className="relative w-full h-[600px] rounded-3xl overflow-hidden shadow-2xl shadow-amber-900/50 border-4 border-amber-900/50 bg-stone-950 cursor-crosshair group touch-none select-none z-10"
                     style={{ minHeight: '600px', display: 'block' }}
                 >
-                    {/* Base Layer */}
+                    {/* Base Layer – progressive image */}
                     <div className="absolute inset-0 z-0 pointer-events-none">
+                        {/* LQIP blur placeholder for base image */}
+                        <img
+                            src={lqip_Marktplatz_Goslar_extra}
+                            alt=""
+                            aria-hidden
+                            className="w-full h-full object-cover opacity-70"
+                            style={{
+                                filter: 'blur(16px)',
+                                transform: 'scale(1.08)',
+                                position: 'absolute',
+                                inset: 0,
+                                transition: 'opacity 0.5s',
+                                opacity: baseBgLoaded ? 0 : 0.7,
+                            }}
+                        />
                         <img
                             src={goslarImage}
                             alt="Modern Goslar"
                             className="w-full h-full object-cover opacity-70"
                             loading="lazy"
                             draggable={false}
+                            style={{
+                                position: 'absolute',
+                                inset: 0,
+                                transition: 'opacity 0.6s ease',
+                                opacity: baseBgLoaded ? 0.7 : 0,
+                            }}
+                            onLoad={() => setBaseBgLoaded(true)}
                         />
                         <div className="absolute inset-0 bg-stone-900/30" />
                         <div
@@ -135,7 +154,7 @@ export const ARSimulation = () => {
                         />
                     </div>
 
-                    {/* The Phone Lens - Realistic Modern Smartphone */}
+                    {/* Phone Lens */}
                     <div
                         ref={lensRef}
                         className={`absolute z-50 pointer-events-none overflow-hidden`}
@@ -161,27 +180,43 @@ export const ARSimulation = () => {
                         )}
                         {/* Phone Notch */}
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-36 h-7 bg-black z-50 rounded-b-2xl"
-                            style={{
-                                boxShadow: '0 2px 4px rgba(0,0,0,0.3)'
-                            }}
+                            style={{ boxShadow: '0 2px 4px rgba(0,0,0,0.3)' }}
                         />
 
-                        {/* Screen Content */}
-                        <div
-                            ref={innerImageRef}
-                            className="absolute top-0 left-0"
-                        >
+                        {/* Screen Content – progressive historic image */}
+                        <div ref={innerImageRef} className="absolute top-0 left-0">
+                            {/* LQIP blur for historic image */}
+                            <img
+                                src={lqip_Marktplatz_Goslar_extra__historical}
+                                alt=""
+                                aria-hidden
+                                style={{
+                                    position: 'absolute',
+                                    inset: 0,
+                                    width: '100%',
+                                    height: '100%',
+                                    objectFit: 'cover',
+                                    filter: 'blur(12px)',
+                                    transform: 'scale(1.05)',
+                                    transition: 'opacity 0.5s',
+                                    opacity: historicLoaded ? 0 : 1,
+                                }}
+                            />
                             <img
                                 src={historicImage}
                                 className="w-full h-full object-cover"
                                 alt="Historic Goslar 1520"
                                 loading="lazy"
                                 draggable={false}
+                                style={{
+                                    transition: 'opacity 0.5s ease',
+                                    opacity: historicLoaded ? 1 : 0,
+                                }}
+                                onLoad={() => setHistoricLoaded(true)}
                             />
 
-                            {/* Screen Overlay with Status Bar */}
+                            {/* Screen Overlay */}
                             <div className="absolute inset-0 pointer-events-none">
-                                {/* AR Info Overlay */}
                                 <div className="absolute top-12 right-4 bg-black/70 backdrop-blur-sm px-3 py-1.5 rounded-lg text-xs text-white font-medium border border-white/20">
                                     <span className="opacity-80">1520 AD</span>
                                 </div>

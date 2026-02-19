@@ -1,9 +1,19 @@
 import React from 'react';
-import { MapPin, ScanLine, Eye, Smartphone } from 'lucide-react';
+import { MapPin, ScanLine, Smartphone } from 'lucide-react';
 import { motion } from 'motion/react';
-import ortBesuchenImg from 'figma:asset/94467f8e2f7836b3b0fa30490a24ba6f9f8087f6.png';
-import scannenImg from 'figma:asset/0830329a7f9cfe99b6b8aa647f9e9d3fe5477557.png';
-import vergangenheitErlebenImg from 'figma:asset/1a1e0ad5f4acf16545ee8e6abf926b762f6d098f.png';
+import { ProgressiveImage } from './ProgressiveImage';
+
+// WebP versions (~300-500KB each instead of ~8-10MB)
+import ortBesuchenImg from '../assets/webp/94467f8e2f7836b3b0fa30490a24ba6f9f8087f6.webp';
+import scannenImg from '../assets/webp/0830329a7f9cfe99b6b8aa647f9e9d3fe5477557.webp';
+import vergangenheitErlebenImg from '../assets/webp/1a1e0ad5f4acf16545ee8e6abf926b762f6d098f.webp';
+
+// LQIP blur placeholders (tiny base64, shown instantly)
+import {
+  lqip__94467f8e2f7836b3b0fa30490a24ba6f9f8087f6 as lqip1,
+  lqip__0830329a7f9cfe99b6b8aa647f9e9d3fe5477557 as lqip2,
+  lqip__1a1e0ad5f4acf16545ee8e6abf926b762f6d098f as lqip3,
+} from '../assets/lqip';
 
 const steps = [
   {
@@ -11,21 +21,24 @@ const steps = [
     title: "Standort entdecken",
     description: "Reise nach Goslar und finde markierte Wahrzeichen und versteckte historische Bürgerhäuser.",
     icon: MapPin,
-    image: ortBesuchenImg
+    image: ortBesuchenImg,
+    lqip: lqip1,
   },
   {
     id: 2,
     title: "QR-Code scannen",
     description: "Nutze deine Kamera, um den QR-Code am Gebäude zu scannen und die Zeitreise zu starten.",
     icon: ScanLine,
-    image: scannenImg
+    image: scannenImg,
+    lqip: lqip2,
   },
   {
     id: 3,
     title: "Geschichte hören & sehen",
     description: "Erlebe die historische Ansicht und höre dir spannende Geschichten über Audio-Guides an.",
     icon: Smartphone,
-    image: vergangenheitErlebenImg
+    image: vergangenheitErlebenImg,
+    lqip: lqip3,
   }
 ];
 
@@ -50,11 +63,12 @@ export const HowItWorks = () => {
             >
               {/* Image Container */}
               <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-8 shadow-lg border border-amber-100 group-hover:border-amber-300 transition-colors">
-                <img
+                <ProgressiveImage
                   src={step.image}
+                  lqip={step.lqip}
                   alt={step.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
+                  className="w-full h-full transition-transform duration-700 group-hover:scale-105"
+                  style={{ objectFit: 'cover' }}
                 />
                 <div className="absolute inset-0 bg-amber-900/0 group-hover:bg-amber-900/20 transition-colors" />
 

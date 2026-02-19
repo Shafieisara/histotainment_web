@@ -1,22 +1,50 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Smartphone, ArrowRight } from 'lucide-react';
-import goslarHeroImage from '../assets/Goslar_Marktplatz.jpg';
+
+// WebP version of hero image
+import goslarHeroImage from '../assets/webp/Goslar_Marktplatz.webp';
+import { lqip_Goslar_Marktplatz } from '../assets/lqip';
 
 export const Hero = () => {
+  const [heroLoaded, setHeroLoaded] = React.useState(false);
+
   return (
     <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-slate-900 pt-20">
-      {/* Background Image */}
+      {/* Background Image with progressive blur-up */}
       <div className="absolute inset-0 z-0">
+        {/* Blurred LQIP – visible immediately */}
+        <img
+          src={lqip_Goslar_Marktplatz}
+          alt=""
+          aria-hidden="true"
+          className="w-full h-full object-cover"
+          style={{
+            filter: 'blur(20px)',
+            transform: 'scale(1.08)',
+            position: 'absolute',
+            inset: 0,
+            transition: 'opacity 0.5s ease',
+            opacity: heroLoaded ? 0 : 1,
+          }}
+        />
+        {/* Full WebP image fades in on top */}
         <img
           src={goslarHeroImage}
           alt="Historic Goslar Market Square"
           className="w-full h-full object-cover"
           loading="eager"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            transition: 'opacity 0.6s ease',
+            opacity: heroLoaded ? 1 : 0,
+          }}
+          onLoad={() => setHeroLoaded(true)}
         />
-        {/* Overlay gradient for readability - Using inline style to force update */}
+        {/* Overlay gradient for readability */}
         <div
-          className="absolute inset-0 z-1"
+          className="absolute inset-0 z-[1]"
           style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}
         />
       </div>

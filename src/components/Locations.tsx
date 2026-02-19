@@ -1,35 +1,49 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Sparkles, MapPin } from 'lucide-react';
+import { ProgressiveImage } from './ProgressiveImage';
 
-// FAMOUS LOCATIONS IMAGES
-import marktplatzImg from '../assets/Goslar_-_Marktplatz_-_2.jpg';
-import kaiserpfalzImg from '../assets/Kaiserpfalz.jpg';
-import rammelsbergImg from '../assets/Goslar_Rammelsberg_Haus_A_from_Werkshof.jpg';
+// WebP versions – dramatically smaller than originals
+import marktplatzImg from '../assets/webp/Goslar_-_Marktplatz_-_2.webp';
+import kaiserpfalzImg from '../assets/webp/Kaiserpfalz.webp';
+import rammelsbergImg from '../assets/webp/Goslar_Rammelsberg_Haus_A_from_Werkshof.webp';
+import kemenateImg from '../assets/webp/kemenate_roever.webp';
+import heiligeskreuzImg from '../assets/webp/heiliges_kreuz.webp';
+import annenhausImg from '../assets/webp/annenhaus.webp';
+import brusttuchImg from '../assets/webp/brusttuch.webp';
+import moenchehausImg from '../assets/webp/moenchehaus.webp';
+import siemenshausImg from '../assets/webp/siemenshaus.webp';
 
-// HIDDEN GEMS IMAGES
-import kemenateImg from '../assets/kemenate_roever.jpg';
-import heiligeskreuzImg from '../assets/heiliges_kreuz.jpg';
-import annenhausImg from '../assets/annenhaus.jpg';
-import brusttuchImg from '../assets/brusttuch.jpg';
-import moenchehausImg from '../assets/moenchehaus.jpg';
-import siemenshausImg from '../assets/siemenshaus.jpg';
+import {
+  lqip_Goslar___Marktplatz___2,
+  lqip_Kaiserpfalz,
+  lqip_Goslar_Rammelsberg_Haus_A_from_Werkshof,
+  lqip_kemenate_roever,
+  lqip_heiliges_kreuz,
+  lqip_annenhaus,
+  lqip_brusttuch,
+  lqip_moenchehaus,
+  lqip_siemenshaus,
+} from '../assets/lqip';
 
 const famousLocations = [
   {
     title: "Marktplatz Goslar",
     description: "Der zentrale Platz mit dem Marktbrunnen, umgeben von historischen Gildehäusern und dem Rathaus.",
-    image: marktplatzImg
+    image: marktplatzImg,
+    lqip: lqip_Goslar___Marktplatz___2,
   },
   {
     title: "Kaiserpfalz",
     description: "Die monumentale Pfalz der Salierkaiser, ein einzigartiges Denkmal weltlicher Baukunst.",
-    image: kaiserpfalzImg
+    image: kaiserpfalzImg,
+    lqip: lqip_Kaiserpfalz,
   },
   {
     title: "Rammelsberg Bergwerk",
     description: "UNESCO-Welterbe mit über 1000 Jahren Bergbaugeschichte. Erlebe die faszinierende Welt unter Tage in 3D.",
-    image: rammelsbergImg
+    image: rammelsbergImg,
+    lqip: lqip_Goslar_Rammelsberg_Haus_A_from_Werkshof,
   }
 ];
 
@@ -38,36 +52,42 @@ const hiddenGems = [
     title: "Kemenate Röver",
     description: "Ein seltenes romanisches Wohnhaus (um 1100). Zeugnis der frühesten bürgerlichen Baukultur.",
     image: kemenateImg,
+    lqip: lqip_kemenate_roever,
     tag: "Romanik (1100)"
   },
   {
     title: "Großes Heiliges Kreuz",
     description: "Eines der ältesten erhaltenen Hospitäler (1254). Ort der Fürsorge und Sozialgeschichte.",
     image: heiligeskreuzImg,
+    lqip: lqip_heiliges_kreuz,
     tag: "Gotik (1254)"
   },
   {
     title: "St. Annenhaus",
     description: "Das älteste vollständig erhaltene Fachwerkhaus (1488). Ein Hospiz der Spätgotik.",
     image: annenhausImg,
+    lqip: lqip_annenhaus,
     tag: "Gotik (1488)"
   },
   {
     title: "Das Brusttuch",
     description: "Reich verziertes Patrizierhaus (1521) der Frührenaissance mit der berühmten Butterhanne.",
     image: brusttuchImg,
+    lqip: lqip_brusttuch,
     tag: "Renaissance (1521)"
   },
   {
     title: "Mönchehaus",
     description: "Ehemaliges Ackerbürgerhaus (1528), heute Museum für moderne Kunst. Spannender Kontrast.",
     image: moenchehausImg,
+    lqip: lqip_moenchehaus,
     tag: "Renaissance (1528)"
   },
   {
     title: "Siemenshaus",
     description: "Stattliches Barock-Bürgerhaus (1693). Stammhaus der Industriellenfamilie Siemens.",
     image: siemenshausImg,
+    lqip: lqip_siemenshaus,
     tag: "Barock (1693)"
   }
 ];
@@ -100,11 +120,12 @@ export const Locations = () => {
                 className="group cursor-pointer"
               >
                 <div className="relative overflow-hidden rounded-2xl aspect-[3/4]">
-                  <img
+                  <ProgressiveImage
                     src={loc.image}
+                    lqip={loc.lqip}
                     alt={loc.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    loading="lazy"
+                    className="w-full h-full transition-transform duration-700 group-hover:scale-110"
+                    style={{ objectFit: 'cover' }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-transparent to-transparent opacity-80" />
 
@@ -133,7 +154,6 @@ export const Locations = () => {
             </p>
           </div>
 
-          {/* Smaller Grid: 2 columns on mobile, 3 on desktop for 6 items. Cards are more compact. */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {hiddenGems.map((loc, idx) => (
               <motion.div
@@ -144,14 +164,14 @@ export const Locations = () => {
                 transition={{ delay: idx * 0.1, duration: 0.5 }}
                 className="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-stone-200 hover:border-stone-300"
               >
-                {/* Image Container - Smaller aspect ratio */}
                 {/* Image Container */}
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
+                  <ProgressiveImage
                     src={loc.image}
+                    lqip={loc.lqip}
                     alt={loc.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 grayscale-[20%] group-hover:grayscale-0"
-                    loading="lazy"
+                    className="w-full h-full transition-transform duration-500 group-hover:scale-105 grayscale-[20%] group-hover:grayscale-0"
+                    style={{ objectFit: 'cover' }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-transparent to-transparent opacity-60 group-hover:opacity-70 transition-opacity" />
 
@@ -164,7 +184,7 @@ export const Locations = () => {
                   </div>
                 </div>
 
-                {/* TAG: Top Right - Robust Inline Styles to guarantee visibility */}
+                {/* TAG: Top Right */}
                 <div
                   style={{
                     position: 'absolute',

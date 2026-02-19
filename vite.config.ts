@@ -55,7 +55,36 @@ export default defineConfig({
   build: {
     target: 'esnext',
     outDir: 'dist',
-    chunkSizeWarningLimit: 1600,
+    chunkSizeWarningLimit: 2000,
+    // Inline assets ≤ 8KB as base64 (covers LQIP blur placeholders — 0 extra network requests)
+    assetsInlineLimit: 8192,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          // Spline 3D runtime → own lazy chunk (only fetched when user scrolls to 3D section)
+          if (id.includes('@splinetool')) return 'spline';
+          // Animation lib → own chunk
+          if (id.includes('motion/react') || id.includes('motion/dist')) return 'motion';
+          // Radix UI primitives → shared vendor chunk
+          if (id.includes('@radix-ui')) return 'radix';
+          // Concept A sections
+          if (
+            id.includes('ModelSection') ||
+            id.includes('HowItWorks') ||
+            id.includes('ARSimulation') ||
+            id.includes('ReferenceProjectsA')
+          ) return 'concept-a';
+          // Concept B sections
+          if (
+            id.includes('HowItWorksB') ||
+            id.includes('InteractiveConceptB') ||
+            id.includes('ReferenceProjectsB')
+          ) return 'concept-b';
+          // Locations
+          if (id.includes('Locations')) return 'locations';
+        },
+      },
+    },
   },
   server: {
     port: 3000,

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { MapPin, Globe, Info, ExternalLink, Sparkles } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 export const InteractiveConceptB = () => {
     // START HERE: Replace this string with your Google Maps Embed URL
