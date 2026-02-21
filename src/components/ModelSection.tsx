@@ -1,4 +1,4 @@
-import React, { Suspense, useState, useEffect, useRef } from 'react';
+import React, { Suspense, useState, useEffect, useRef, useCallback } from 'react';
 import { Loader, Sparkles, Play } from 'lucide-react';
 
 // Static preview of the 3D scene – shown until user clicks "Load"
@@ -11,6 +11,7 @@ const SPLINE_SCENE = 'https://prod.spline.design/MKhpwKpQFxIejUUa/scene.splineco
 
 export const ModelSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const splineContainerRef = useRef<HTMLDivElement>(null);
 
   // Step 1 – is the section near the viewport?
   const [isNearViewport, setIsNearViewport] = useState(false);
@@ -18,6 +19,8 @@ export const ModelSection = () => {
   const [userRequestedLoad, setUserRequestedLoad] = useState(false);
   // Step 3 – has Spline finished loading?
   const [splineReady, setSplineReady] = useState(false);
+
+  const shouldLoadSpline = isNearViewport && userRequestedLoad;
 
   // Only show the "Load" button once the section scrolls into view (within 200px)
   useEffect(() => {
@@ -36,7 +39,17 @@ export const ModelSection = () => {
     return () => observer.disconnect();
   }, []);
 
-  const shouldLoadSpline = isNearViewport && userRequestedLoad;
+  // Prevent the page from scrolling while the user scrolls/zooms inside the Spline viewer
+  const handleWheel = useCallback((e: WheelEvent) => {
+    e.preventDefault();
+  }, []);
+
+  useEffect(() => {
+    const el = splineContainerRef.current;
+    if (!el || !shouldLoadSpline) return;
+    el.addEventListener('wheel', handleWheel, { passive: false });
+    return () => el.removeEventListener('wheel', handleWheel);
+  }, [shouldLoadSpline, handleWheel]);
 
   return (
     <section className="pt-8 pb-20 overflow-hidden" ref={sectionRef}>
@@ -58,7 +71,7 @@ export const ModelSection = () => {
 
           {shouldLoadSpline ? (
             /* ── Spline viewer ── */
-            <div className="absolute inset-0 z-10">
+            <div className="absolute inset-0 z-10" ref={splineContainerRef}>
               <Suspense
                 fallback={
                   <div className="flex h-full w-full items-center justify-center bg-stone-100">
